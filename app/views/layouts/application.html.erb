@@ -22,11 +22,11 @@
         <li class="nav-item">
           <% if user_signed_in? %>
           <a>
-            <%= link_to "Home", "user_path" %>
+            <%= link_to "Home", user_path(current_user.id) %>
           </a>
           <% else %>
           <a>
-            <%= link_to "Home", "/" %>
+            <%= link_to "Home", root_path %>
           </a>
           <% end %>
         </li>

@@ -1,13 +1,16 @@
 class UsersController < ApplicationController
 
   def show
-    @user =Book.find(params[:id])  
-    @book_images = @user.book_images
+    @user = User.find(params[:id])
+    @books = @user.books
   end
 
   def edit
   end
-  
+
   def index
+  end
+  def user_params
+    params.require(:user).permit(:name, :profile_image, :introduction)
   end
 end

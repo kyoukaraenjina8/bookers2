@@ -1,15 +1,14 @@
 <main>
 <div>
-  <h3><%= @user.name %></h3>
+  <h1>User info</h1>
   <%= image_tag @user.get_profile_image(100,100) %>
+  <h3>name <%= @user.name %></h3>
+  <h3>introduction <%= @user.introduction %></h3>
 </div>
 <div class = main-box>
-<% @book_images.each do |book| %>
+<% @books.each do |book| %>
 <div>
   <%= link_to "book.title", "/" %>
-  <%= link_to post_image_path(post_image.id) do %>
-    <%= image_tag book.get_image %>
-  <% end %>
   <p>投稿ユーザー画像：<%= image_tag book.user.get_profile_image(100,100) %></p>
   <p>Opinion：<%= book.body %></p>
 </div>
