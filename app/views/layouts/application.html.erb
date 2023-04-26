@@ -16,55 +16,53 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <ul class="navbar-nav ml-auto">　
+    <ul class="navbar-nav ml-auto">
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
         <li class="nav-item">
         <% if user_signed_in? %>
-          <a><%= link_to user_path(current_user.id) do %>
-            <p><i class="fas fa-book"></i> home </p>
-          </a>
+          <%= link_to user_path(current_user.id) do %>
+            <p><i class="fas fa-book"></i> Home </p>
           <% end %>
           <% else %>
-          <a><%= link_to root_path do %>
-            <p><i class="fas fa-book"></i> home </p>
-          </a>
+          <%= link_to root_path do %>
+            <p><i class="fas fa-book"></i> Home </p>
           <% end %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+        <% if user_signed_in? %>
+        <%= link_to users_path do %>
+        <p><i class="fas fa-book"></i> Users </p>
+        <% end %>
+        <% else %>
+        <%= link_to about_path do %>
+        <p><i class="fas fa-book"></i> About </p>
+        <% end %>
         <% end %>
         </li>
         <li class="nav-item">
         <% if user_signed_in? %>
-          <a>
-            <%= link_to "Users", users_path %>
-          </a>
-          <% else %>
-          <a>
-            <%= link_to "About", "about" %>
-          </a>
+        <%= link_to books_path do %>
+        <p><i class="fas fa-book"></i> Books </p>
+        <% end %>
+        <% else %>
+        <%= link_to new_user_registration_path do %>
+        <p><i class="fas fa-book"></i> Sign up </p>
+        <% end %>
         <% end %>
         </li>
         <li class="nav-item">
         <% if user_signed_in? %>
-          <a>
-            <%= link_to "Books", books_path %>
-          </a>
-          <% else %>
-          <a>
-            <%= link_to "sign up", new_user_registration_path %>
-          </a>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+        <p><i class="fas fa-book"></i> Log out </p>
         <% end %>
-        </li>
-        <li class="nav-item">
-          <% if user_signed_in? %>
-          <a>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-          </a>
-          <% else %>
-          <a>
-            <%= link_to "Log in", new_user_session_path %>
-          </a>
-          <% end %>
+        <% else %>
+        <%= link_to new_user_session_path do %>
+        <p><i class="fas fa-book"></i> Log in </p>
+        <% end %>
+        <% end %>
         </li>
       </ul>
       </div>
@@ -72,6 +70,7 @@
       </nav>
     </header>
   <main>
+    <%= yield %>
   </main>
     <footer>
       <div class='container mt-5'>
@@ -82,6 +81,5 @@
       </div>
       </div>
     </footer>
-    <%= yield %>
   </body>
 </html>
