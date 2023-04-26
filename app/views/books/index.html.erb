@@ -1,27 +1,39 @@
-<h3>New book</h3>
-  <%= form_with model: @book, method: :post do |f| %>
+<div class="container">
+  <div class="row">
+  <div class="col-md-3" style="background-color: orange;">
+    
+    <h3>New book</h3>
+    <%= form_with model: @book, method: :post do |f| %>
     <h4>Title</h4>
-      <%= f.text_field :title %>
+    <%= f.text_field :title %>
     <h4>Opinion</h4>
-      <%= f.text_area :body %>
+    <%= f.text_area :body %>
     <%= f.submit 'Create Book' %>
-  <% end %>
-
-<table class="table">
-  <thead>
+    <% end %>
+    <div class="btn-group-vertical d-grid gap-2 col-2 mx-auto ">
+    </div>
+  </div>
+  <div class="col-lg-9">
+    <h3>Books</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="3"></th>
+          <th>Title</th>
+          <th>Opinion</th>
+         </tr>
+      </thead>
+    <% @books.each do |book| %>
+  <tbody class="table-group-divider">
     <tr>
-      <th>Title</th>
-      <th>Opinion</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-      <% @books.each do |book| %>
-   <tbody class="table-group-divider">
-
     <td><%= image_tag book.user.get_profile_image(100,100) %></td>
     <td><%= link_to book.title, books_path %></td>
     <td><%= book.body %></td>
-    
+    </tr>
   </tbody>
   <% end %>
 </table>
+  </div>
+  </div>
+</div>
+

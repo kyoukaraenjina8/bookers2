@@ -16,7 +16,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.all
+    @users = User.all
+    @user = User.find(params[:id])
   end
 
   private
